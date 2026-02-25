@@ -8,3 +8,4 @@ Checks: >
   -readability-magic-numbers,
   -cppcoreguidelines-avoid-magic-numbers,
   -misc-include-cleaner,
+  -concurrency-mt-unsafe,
