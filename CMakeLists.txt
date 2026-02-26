@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 4.2.3)
 project(
-	os_lab_1
+	lab_1
 	VERSION 1.0
 	LANGUAGES C
-	DESCRIPTION "A project written in c"
+	DESCRIPTION "a simple unix shell"
 )
 
-add_executable(os_lab_1 src/main.c)
+add_executable(lab_1 src/main.c)
 target_compile_options(
-	os_lab_1
+	lab_1
 	PRIVATE -Werror
 			-Wall
 			-Wextra

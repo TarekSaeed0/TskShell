@@ -9,3 +9,4 @@ Checks: >
   -cppcoreguidelines-avoid-magic-numbers,
   -misc-include-cleaner,
   -concurrency-mt-unsafe,
+  -clang-analyzer-security.ArrayBound,

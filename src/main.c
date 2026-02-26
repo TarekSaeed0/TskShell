@@ -7,9 +7,18 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-enum {
-	MAXIMUM_ARGUMENTS = 100,
-};
+/*
+
+=============================
+Grammer
+=============================
+
+command =
+
+<quoted-string> = "\"",
+<ascii-character>
+
+*/
 
 typedef enum {
 	COMMAND_TYPE_BUILTIN,
@@ -36,14 +45,39 @@ typedef struct {
 } BuiltinCommand;
 
 int builtin_cd(int argc, char **argv) {
-	if (argc != 2) {
-		fprintf(stderr, "Usage: cd <directory>\n");
+	char *home = getenv("HOME");
+	if (home == NULL) {
+		(void)fprintf(stderr, "Error: HOME environment variable is not set\n");
 		return EXIT_FAILURE;
 	}
 
-	if (chdir(argv[1]) == -1) {
-		perror("chdir");
-		return EXIT_FAILURE;
+	if (argc == 1) {
+		if (chdir(home) == -1) {
+			perror("Error");
+			return EXIT_FAILURE;
+		}
+	} else if (argc == 2 && argv[1][0] == '~') {
+		size_t buffer_size = (size_t)snprintf(NULL, 0, "%s%s", home, argv[1] + 1);
+		char *buffer       = malloc(buffer_size + 1);
+		if (buffer == NULL) {
+			perror("Error");
+			exit(EXIT_FAILURE);
+		}
+
+		(void)snprintf(buffer, buffer_size + 1, "%s%s", home, argv[1] + 1);
+
+		if (chdir(buffer) == -1) {
+			perror("Error");
+			free(buffer);
+			return EXIT_FAILURE;
+		}
+
+		free(buffer);
+	} else {
+		if (chdir(argv[1]) == -1) {
+			perror("Error");
+			return EXIT_FAILURE;
+		}
 	}
 
 	return EXIT_SUCCESS;
@@ -62,7 +96,23 @@ int builtin_echo(int argc, char **argv) {
 }
 
 int builtin_export(int argc, char **argv) {
-	(void)argc, (void)argv;
+	for (int i = 1; i < argc; i++) {
+		char *equal_sign = strchr(argv[i], '=');
+		if (equal_sign == NULL) {
+			(void)fprintf(stderr, "Usage: export <name>=<value>\n");
+			return EXIT_FAILURE;
+		}
+
+		*equal_sign       = '\0';
+		const char *name  = argv[i];
+		const char *value = equal_sign + 1;
+
+		if (setenv(name, value, 1) == -1) {
+			perror("Error");
+			return EXIT_FAILURE;
+		}
+	}
+
 	return EXIT_SUCCESS;
 }
 
@@ -79,9 +129,13 @@ const BuiltinCommand builtins[] = {
 	{ "exit", builtin_exit },
 };
 
-CommandType determine_command_type(const char *command) {
+CommandType determine_command_type(const char *name) {
+	if (name == NULL) {
+		return COMMAND_TYPE_ERROR;
+	}
+
 	for (size_t i = 0; i < sizeof(builtins) / sizeof(*builtins); i++) {
-		if (strcmp(command, builtins[i].name) == 0) {
+		if (strcmp(name, builtins[i].name) == 0) {
 			return COMMAND_TYPE_BUILTIN;
 		}
 	}
@@ -102,7 +156,7 @@ Command parse_command(char *input) {
 	while (true) {
 		char **arguments = (char **)realloc((void *)command.arguments, (command.argument_count + 1) * sizeof(*command.arguments));
 		if (arguments == NULL) {
-			perror("realloc");
+			perror("Error");
 			exit(EXIT_FAILURE);
 		}
 
@@ -144,7 +198,7 @@ Command parse_command(char *input) {
 }
 
 void execute_shell_builtin(Command command) {
-	assert(command.command_type == COMMAND_TYPE_BUILTIN);
+	assert(command.name != NULL && command.command_type == COMMAND_TYPE_BUILTIN);
 
 	for (size_t i = 0; i < sizeof(builtins) / sizeof(*builtins); i++) {
 		if (strcmp(command.name, builtins[i].name) == 0) {
@@ -155,16 +209,16 @@ void execute_shell_builtin(Command command) {
 }
 
 void execute_command(Command command) {
-	assert(command.command_type == COMMAND_TYPE_EXECUTABLE);
+	assert(command.name != NULL && command.command_type == COMMAND_TYPE_EXECUTABLE);
 
 	pid_t pid = fork();
 
 	if (pid == 0) {
 		execvp(command.name, command.arguments);
-		perror("execvp");
+		perror("Error");
 		exit(EXIT_FAILURE);
 	} else if (pid == -1) {
-		perror("fork");
+		perror("Error");
 		exit(EXIT_FAILURE);
 	} else if (command.execution_type == EXECUTION_TYPE_FOREGROUND) {
 		waitpid(pid, NULL, 0);
@@ -176,6 +230,8 @@ void shell(void) {
 	size_t buffer_size = 0;
 
 	while (true) {
+		printf("> ");
+
 		ssize_t read = getline(&buffer, &buffer_size, stdin);
 		if (read == -1) {
 			break;
@@ -208,7 +264,7 @@ void setup_environment(void) {
 }
 
 int main(void) {
-	signal(SIGCHLD, on_child_exit);
+	(void)signal(SIGCHLD, on_child_exit);
 	setup_environment();
 	shell();
 }
