@@ -73,8 +73,6 @@ void shell(void) {
 	size_t buffer_size = 0;
 
 	while (true) {
-		printf("> ");
-
 		ssize_t read = getline(&buffer, &buffer_size, stdin);
 		if (read == -1) {
 			break;
