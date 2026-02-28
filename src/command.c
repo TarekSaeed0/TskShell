@@ -1,7 +1,8 @@
 #include <command.h>
 
+#include <argument.h>
 #include <arguments.h>
-#include <word.h>
+#include <arguments_builder.h>
 
 #include <assert.h>
 #include <ctype.h>
@@ -11,8 +12,6 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
-// TODO: parse & at the end of command
 
 static inline void skip_whitespace(const char **start) {
 	assert(start != NULL && *start != NULL);
@@ -93,7 +92,7 @@ static bool parse_expansion(const char **value, const char **start) {
 	*value    = getenv(key);
 	free(key);
 
-	if (value == NULL) {
+	if (*value == NULL) {
 		*value = "";
 	}
 
@@ -105,17 +104,19 @@ static inline bool is_single_quoted_start(const char *start) {
 
 	return *start == '\'';
 }
-static bool parse_single_quoted(Word *word, const char **start) {
-	assert(word != NULL && start != NULL && *start != NULL);
+static bool parse_single_quoted(ArgumentsBuilder *builder, const char **start) {
+	assert(builder != NULL && start != NULL && *start != NULL);
 
 	if (**start != '\'') {
 		return false;
 	}
 
+	arguments_builder_ensure_in_argument(builder);
+
 	++*start;
 
 	while (**start != '\0' && **start != '\'') {
-		if (!word_append_character(word, **start)) {
+		if (!arguments_builder_append_character(builder, **start)) {
 			return false;
 		}
 		++*start;
@@ -135,12 +136,14 @@ static inline bool is_double_quoted_start(const char *start) {
 
 	return *start == '\"';
 }
-static bool parse_double_quoted(Word *word, const char **start) {
-	assert(word != NULL && start != NULL && *start != NULL);
+static bool parse_double_quoted(ArgumentsBuilder *builder, const char **start) {
+	assert(builder != NULL && start != NULL && *start != NULL);
 
 	if (**start != '"') {
 		return false;
 	}
+
+	arguments_builder_ensure_in_argument(builder);
 
 	++*start;
 
@@ -151,11 +154,11 @@ static bool parse_double_quoted(Word *word, const char **start) {
 				return false;
 			}
 
-			if (!word_append_string(word, value)) {
+			if (!arguments_builder_append_string(builder, value)) {
 				return false;
 			}
 		} else {
-			if (!word_append_character(word, **start)) {
+			if (!arguments_builder_append_character(builder, **start)) {
 				return false;
 			}
 			++*start;
@@ -171,8 +174,12 @@ static bool parse_double_quoted(Word *word, const char **start) {
 	return true;
 }
 
-static bool parse_word_element(Arguments *arguments, Word *word, const char **start) {
-	assert(arguments != NULL && word != NULL && start != NULL && *start != NULL);
+static inline bool is_unquoted_character(char character) {
+	return character != '\0' && !isspace((unsigned char)character) && character != '\'' && character != '"' && character != '$' && character != '&';
+}
+
+static bool parse_argument_element(ArgumentsBuilder *builder, const char **start) {
+	assert(builder != NULL && start != NULL && *start != NULL);
 
 	if (is_expansion_start(*start)) {
 		const char *value = NULL;
@@ -182,17 +189,11 @@ static bool parse_word_element(Arguments *arguments, Word *word, const char **st
 
 		while (*value != '\0') {
 			if (isspace((unsigned char)*value)) {
-				if (word->length > 0) {
-					if (!arguments_append(arguments, word_take_data(word))) {
-						return false;
-					}
-
-					*word = word_new();
-				}
+				arguments_builder_end_argument(builder);
 
 				skip_whitespace(&value);
 			} else {
-				if (!word_append_character(word, *value)) {
+				if (!arguments_builder_append_character(builder, *value)) {
 					return false;
 				}
 				++value;
@@ -203,7 +204,7 @@ static bool parse_word_element(Arguments *arguments, Word *word, const char **st
 	}
 
 	if (is_single_quoted_start(*start)) {
-		if (!parse_single_quoted(word, start)) {
+		if (!parse_single_quoted(builder, start)) {
 			return false;
 		}
 
@@ -211,15 +212,15 @@ static bool parse_word_element(Arguments *arguments, Word *word, const char **st
 	}
 
 	if (is_double_quoted_start(*start)) {
-		if (!parse_double_quoted(word, start)) {
+		if (!parse_double_quoted(builder, start)) {
 			return false;
 		}
 
 		return true;
 	}
 
-	if (**start != '\0' && !isspace((unsigned)**start)) {
-		if (!word_append_character(word, **start)) {
+	if (is_unquoted_character(**start)) {
+		if (!arguments_builder_append_character(builder, **start)) {
 			return false;
 		}
 
@@ -231,19 +232,17 @@ static bool parse_word_element(Arguments *arguments, Word *word, const char **st
 	return false;
 }
 
-static bool parse_word(Arguments *arguments, Word *word, const char **start) {
-	assert(arguments != NULL && word != NULL && start != NULL && *start != NULL);
+static bool parse_word(ArgumentsBuilder *builder, const char **start) {
+	assert(builder != NULL && start != NULL && *start != NULL);
 
 	while (**start != '\0' && !isspace((unsigned char)**start)) {
-		if (!parse_word_element(arguments, word, start)) {
+		if (!parse_argument_element(builder, start)) {
 			return false;
 		}
 	}
 
-	if (word->data != NULL) {
-		if (!arguments_append(arguments, word_take_data(word))) {
-			return false;
-		}
+	if (!arguments_builder_end_argument(builder)) {
+		return false;
 	}
 
 	return true;
@@ -264,17 +263,16 @@ CommandType determine_command_type(const char *name) {
 bool parse_command(Command *command, const char **start) {
 	assert(command != NULL && start != NULL && *start != NULL);
 
-	Arguments arguments = arguments_new();
+	ArgumentsBuilder builder = arguments_builder_new();
 
 	skip_whitespace(start);
 
-	Word word = word_new();
-
-	if (!parse_word(&arguments, &word, start)) {
-		word_drop(&word);
-		arguments_drop(&arguments);
+	if (!parse_word(&builder, start)) {
+		arguments_builder_drop(&builder);
 		return false;
 	}
+
+	command->execution_type = EXECUTION_TYPE_FOREGROUND;
 
 	while (true) {
 		skip_whitespace(start);
@@ -283,18 +281,20 @@ bool parse_command(Command *command, const char **start) {
 			break;
 		}
 
-		word = word_new();
+		if (**start == '&') {
+			++*start;
+			command->execution_type = EXECUTION_TYPE_BACKGROUND;
+			break;
+		}
 
-		if (!parse_word(&arguments, &word, start)) {
-			word_drop(&word);
-			arguments_drop(&arguments);
+		if (!parse_word(&builder, start)) {
+			arguments_builder_drop(&builder);
 			return false;
 		}
 	}
 
-	command->arguments      = arguments;
-	command->command_type   = determine_command_type(command_name(command));
-	command->execution_type = EXECUTION_TYPE_FOREGROUND;
+	command->arguments    = builder.arguments;
+	command->command_type = determine_command_type(command_name(command));
 
 	return true;
 }

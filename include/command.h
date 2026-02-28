@@ -20,7 +20,7 @@ word_element   = unquoted_character
                | double_quoted
                | expansion ;
 
-unquoted_character        = ? any character except whitespace, ', " and $ ? ;
+unquoted_character        = ? any character except whitespace, ', ", & and $ ? ;
 single_quoted        = "'" , { single_quoted_character } , "'" ;
 double_quoted        = '"' , { double_quoted_character | expansion } , '"' ;
 

@@ -19,6 +19,10 @@ void arguments_drop(Arguments *arguments) {
 		free(arguments->data[i]);
 	}
 	free((void *)arguments->data);
+
+	arguments->data     = NULL;
+	arguments->length   = 0;
+	arguments->capacity = 0;
 }
 
 bool arguments_reserve(Arguments *arguments, size_t additional) {
