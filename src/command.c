@@ -15,7 +15,7 @@
 #include <unistd.h>
 
 int builtin_cd(int argc, char **argv) {
-	char *home = get_environment_variable("HOME");
+	char *home = getenv("HOME");
 	if (home == NULL) {
 		(void)fprintf(stderr, "Error: HOME environment variable is not set\n");
 		return EXIT_FAILURE;
