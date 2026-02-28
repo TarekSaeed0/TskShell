@@ -2,6 +2,7 @@
 
 #include <assert.h>
 #include <ctype.h>
+#include <signal.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,6 +10,35 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+
+void write_to_log_file(const char *message) {
+	FILE *file = fopen("log.txt", "a");
+	if (file == NULL) {
+		perror("Error");
+		return;
+	}
+
+	(void)fprintf(file, "%s\n", message);
+
+	if (fclose(file) != 0) {
+		perror("Error");
+	}
+}
+
+void on_child_exit(int signum) {
+	(void)signum;
+
+	waitpid(-1, NULL, WNOHANG);
+
+	write_to_log_file("Child terminated");
+}
+
+void setup_environment(void) {
+	char *home = getenv("HOME");
+	if (home != NULL) {
+		chdir(home);
+	}
+}
 
 void execute_shell_builtin(const Command *command) {
 	assert(command->command_type == COMMAND_TYPE_BUILTIN);
@@ -33,7 +63,7 @@ void execute_command(const Command *command) {
 	} else if (pid == -1) {
 		perror("Error");
 		exit(EXIT_FAILURE);
-	} else if (command->execution_type == EXECUTION_TYPE_FOREGROUND) {
+	} else if (pid > 0 && command->execution_type == EXECUTION_TYPE_FOREGROUND) {
 		waitpid(pid, NULL, 0);
 	}
 }
@@ -68,19 +98,12 @@ void shell(void) {
 			continue;
 		}
 
-		/* printf("Debug: command: %s\n", command_name(&command));
-		for (size_t i = 0; i < command_arguments_count(&command); i++) {
-		  printf("Debug: argument %zu: %s\n", i, command_arguments(&command)[i]);
-		} */
-
 		switch (command.command_type) {
 			case COMMAND_TYPE_BUILTIN:
 				execute_shell_builtin(&command);
 				break;
 			case COMMAND_TYPE_EXECUTABLE:
 				execute_command(&command);
-				break;
-			case COMMAND_TYPE_ERROR:
 				break;
 		}
 
@@ -90,16 +113,12 @@ void shell(void) {
 	free(buffer);
 }
 
-void on_child_exit(int signum) {
-	(void)signum;
-	while (waitpid(-1, NULL, WNOHANG) > 0) {}
-}
-
-void setup_environment(void) {
-}
-
 int main(void) {
-	(void)signal(SIGCHLD, on_child_exit);
+	if (signal(SIGCHLD, on_child_exit) == SIG_ERR) {
+		perror("Error");
+	}
+
 	setup_environment();
+
 	shell();
 }

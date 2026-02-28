@@ -38,7 +38,6 @@ digit          = "0".."9" ;
 typedef enum {
 	COMMAND_TYPE_BUILTIN,
 	COMMAND_TYPE_EXECUTABLE,
-	COMMAND_TYPE_ERROR,
 } CommandType;
 
 typedef enum {
