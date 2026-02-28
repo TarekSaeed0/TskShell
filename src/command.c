@@ -265,7 +265,7 @@ static inline bool is_unquoted_character(char character) {
 	return character != '\0' && !isspace((unsigned char)character) && character != '\'' && character != '"' && character != '$' && character != '&';
 }
 
-static bool parse_argument_element(ArgumentsBuilder *builder, const char **start) {
+static bool parse_word_element(ArgumentsBuilder *builder, const char **start) {
 	assert(builder != NULL && start != NULL && *start != NULL);
 
 	if (is_expansion_start(*start)) {
@@ -323,7 +323,7 @@ static bool parse_word(ArgumentsBuilder *builder, const char **start) {
 	assert(builder != NULL && start != NULL && *start != NULL);
 
 	while (**start != '\0' && !isspace((unsigned char)**start)) {
-		if (!parse_argument_element(builder, start)) {
+		if (!parse_word_element(builder, start)) {
 			return false;
 		}
 	}

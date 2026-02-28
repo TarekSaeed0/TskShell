@@ -34,10 +34,7 @@ void on_child_exit(int signum) {
 }
 
 void setup_environment(void) {
-	char *home = getenv("HOME");
-	if (home != NULL) {
-		chdir(home);
-	}
+	chdir("/");
 }
 
 void execute_shell_builtin(const Command *command) {
@@ -64,7 +61,15 @@ void execute_command(const Command *command) {
 		perror("Error");
 		exit(EXIT_FAILURE);
 	} else if (pid > 0 && command->execution_type == EXECUTION_TYPE_FOREGROUND) {
-		waitpid(pid, NULL, 0);
+		int status = 0;
+		waitpid(pid, &status, 0);
+
+		if (WIFEXITED(status)) {
+			int return_code = WEXITSTATUS(status);
+			if (return_code != 0) {
+				(void)fprintf(stderr, "Error: process exited with abnormal return code %d\n", return_code);
+			}
+		}
 	}
 }
 
