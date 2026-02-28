@@ -10,3 +10,6 @@ Checks: >
   -misc-include-cleaner,
   -concurrency-mt-unsafe,
   -clang-analyzer-security.ArrayBound,
+  -cert-msc54-cpp,
+  -cert-sig30-c,
+  -bugprone-signal-handler,

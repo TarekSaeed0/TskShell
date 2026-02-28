@@ -3,6 +3,7 @@
 #include <argument.h>
 #include <arguments.h>
 #include <arguments_builder.h>
+#include <environment.h>
 
 #include <assert.h>
 #include <ctype.h>
@@ -14,7 +15,7 @@
 #include <unistd.h>
 
 int builtin_cd(int argc, char **argv) {
-	char *home = getenv("HOME");
+	char *home = get_environment_variable("HOME");
 	if (home == NULL) {
 		(void)fprintf(stderr, "Error: HOME environment variable is not set\n");
 		return EXIT_FAILURE;
@@ -76,7 +77,7 @@ int builtin_export(int argc, char **argv) {
 		const char *name  = argv[i];
 		const char *value = equal_sign + 1;
 
-		if (setenv(name, value, 1) == -1) {
+		if (!set_environment_variable(name, value)) {
 			perror("Error");
 			return EXIT_FAILURE;
 		}
@@ -176,7 +177,7 @@ static bool parse_expansion(const char **value, const char **start) {
 	}
 
 	char *key = strndup(identifier, identifier_length);
-	*value    = getenv(key);
+	*value    = get_environment_variable(key);
 	free(key);
 
 	if (*value == NULL) {
