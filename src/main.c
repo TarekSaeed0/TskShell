@@ -1,4 +1,7 @@
+#include <command.h>
+
 #include <assert.h>
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,220 +10,30 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-/*
+void execute_shell_builtin(const Command *command) {
+	assert(command->command_type == COMMAND_TYPE_BUILTIN);
 
-=============================
-Grammer
-=============================
-
-command =
-
-<quoted-string> = "\"",
-<ascii-character>
-
-*/
-
-typedef enum {
-	COMMAND_TYPE_BUILTIN,
-	COMMAND_TYPE_EXECUTABLE,
-	COMMAND_TYPE_ERROR,
-} CommandType;
-
-typedef enum {
-	EXECUTION_TYPE_FOREGROUND,
-	EXECUTION_TYPE_BACKGROUND,
-} ExecutionType;
-
-typedef struct {
-	CommandType command_type;
-	ExecutionType execution_type;
-	char *name;
-	char **arguments;
-	size_t argument_count;
-} Command;
-
-typedef struct {
-	const char *name;
-	int (*function)(int argc, char **argv);
-} BuiltinCommand;
-
-int builtin_cd(int argc, char **argv) {
-	char *home = getenv("HOME");
-	if (home == NULL) {
-		(void)fprintf(stderr, "Error: HOME environment variable is not set\n");
-		return EXIT_FAILURE;
-	}
-
-	if (argc == 1) {
-		if (chdir(home) == -1) {
-			perror("Error");
-			return EXIT_FAILURE;
-		}
-	} else if (argc == 2 && argv[1][0] == '~') {
-		size_t buffer_size = (size_t)snprintf(NULL, 0, "%s%s", home, argv[1] + 1);
-		char *buffer       = malloc(buffer_size + 1);
-		if (buffer == NULL) {
-			perror("Error");
-			exit(EXIT_FAILURE);
-		}
-
-		(void)snprintf(buffer, buffer_size + 1, "%s%s", home, argv[1] + 1);
-
-		if (chdir(buffer) == -1) {
-			perror("Error");
-			free(buffer);
-			return EXIT_FAILURE;
-		}
-
-		free(buffer);
-	} else {
-		if (chdir(argv[1]) == -1) {
-			perror("Error");
-			return EXIT_FAILURE;
-		}
-	}
-
-	return EXIT_SUCCESS;
-}
-
-int builtin_echo(int argc, char **argv) {
-	for (int i = 1; i < argc; i++) {
-		if (i > 1) {
-			printf(" ");
-		}
-		printf("%s", argv[i]);
-	}
-	printf("\n");
-
-	return EXIT_SUCCESS;
-}
-
-int builtin_export(int argc, char **argv) {
-	for (int i = 1; i < argc; i++) {
-		char *equal_sign = strchr(argv[i], '=');
-		if (equal_sign == NULL) {
-			(void)fprintf(stderr, "Usage: export <name>=<value>\n");
-			return EXIT_FAILURE;
-		}
-
-		*equal_sign       = '\0';
-		const char *name  = argv[i];
-		const char *value = equal_sign + 1;
-
-		if (setenv(name, value, 1) == -1) {
-			perror("Error");
-			return EXIT_FAILURE;
-		}
-	}
-
-	return EXIT_SUCCESS;
-}
-
-int builtin_exit(int argc, char **argv) {
-	(void)argc, (void)argv;
-
-	exit(EXIT_SUCCESS);
-}
-
-const BuiltinCommand builtins[] = {
-	{ "cd", builtin_cd },
-	{ "echo", builtin_echo },
-	{ "export", builtin_export },
-	{ "exit", builtin_exit },
-};
-
-CommandType determine_command_type(const char *name) {
-	if (name == NULL) {
-		return COMMAND_TYPE_ERROR;
-	}
-
-	for (size_t i = 0; i < sizeof(builtins) / sizeof(*builtins); i++) {
-		if (strcmp(name, builtins[i].name) == 0) {
-			return COMMAND_TYPE_BUILTIN;
-		}
-	}
-
-	return COMMAND_TYPE_EXECUTABLE;
-}
-
-Command parse_command(char *input) {
-	Command command = {
-		.execution_type = EXECUTION_TYPE_FOREGROUND,
-		.command_type   = COMMAND_TYPE_ERROR,
-		.name           = NULL,
-		.arguments      = NULL,
-		.argument_count = 0,
-	};
-
-	char *p = input;
-	while (true) {
-		char **arguments = (char **)realloc((void *)command.arguments, (command.argument_count + 1) * sizeof(*command.arguments));
-		if (arguments == NULL) {
-			perror("Error");
-			exit(EXIT_FAILURE);
-		}
-
-		command.arguments = arguments;
-
-		p += strspn(p, " \t\n");
-		if (*p == '\0') {
-			break;
-		}
-
-		if (*p == '&') {
-			command.execution_type = EXECUTION_TYPE_BACKGROUND;
-			p++;
-			break;
-		}
-
-		if (*p == '"') {
-			p++;
-			command.arguments[command.argument_count++] = p;
-			p += strcspn(p, "\"");
-			if (*p != '\0') {
-				*p++ = '\0';
-			}
-		} else {
-			command.arguments[command.argument_count++] = p;
-			p += strcspn(p, " \t\n");
-			if (*p != '\0') {
-				*p++ = '\0';
-			}
-		}
-	}
-
-	command.arguments[command.argument_count] = NULL;
-
-	command.name                              = command.arguments[0];
-	command.command_type                      = determine_command_type(command.name);
-
-	return command;
-}
-
-void execute_shell_builtin(Command command) {
-	assert(command.name != NULL && command.command_type == COMMAND_TYPE_BUILTIN);
-
-	for (size_t i = 0; i < sizeof(builtins) / sizeof(*builtins); i++) {
-		if (strcmp(command.name, builtins[i].name) == 0) {
-			builtins[i].function((int)command.argument_count, command.arguments);
+	for (size_t i = 0; i < builtins_count; i++) {
+		if (strcmp(command_name(command), builtins[i].name) == 0) {
+			builtins[i].function((int)command_arguments_count(command), command_arguments(command));
 			return;
 		}
 	}
 }
 
-void execute_command(Command command) {
-	assert(command.name != NULL && command.command_type == COMMAND_TYPE_EXECUTABLE);
+void execute_command(const Command *command) {
+	assert(command->command_type == COMMAND_TYPE_EXECUTABLE);
 
 	pid_t pid = fork();
 
 	if (pid == 0) {
-		execvp(command.name, command.arguments);
+		execvp(command_name(command), command_arguments(command));
 		perror("Error");
 		exit(EXIT_FAILURE);
 	} else if (pid == -1) {
 		perror("Error");
 		exit(EXIT_FAILURE);
-	} else if (command.execution_type == EXECUTION_TYPE_FOREGROUND) {
+	} else if (command->execution_type == EXECUTION_TYPE_FOREGROUND) {
 		waitpid(pid, NULL, 0);
 	}
 }
@@ -237,19 +50,41 @@ void shell(void) {
 			break;
 		}
 
-		Command command = parse_command(buffer);
+		bool is_only_whitespace = true;
+		for (ssize_t i = 0; i < read; i++) {
+			if (!isspace((unsigned char)buffer[i])) {
+				is_only_whitespace = false;
+				break;
+			}
+		}
+
+		if (is_only_whitespace) {
+			continue;
+		}
+
+		Command command;
+		if (!command_parse(&command, buffer)) {
+			(void)fprintf(stderr, "Error: invalid syntax, failed to parse command\n");
+			continue;
+		}
+
+		/* printf("Debug: command: %s\n", command_name(&command));
+		for (size_t i = 0; i < command_arguments_count(&command); i++) {
+		  printf("Debug: argument %zu: %s\n", i, command_arguments(&command)[i]);
+		} */
+
 		switch (command.command_type) {
 			case COMMAND_TYPE_BUILTIN:
-				execute_shell_builtin(command);
+				execute_shell_builtin(&command);
 				break;
 			case COMMAND_TYPE_EXECUTABLE:
-				execute_command(command);
+				execute_command(&command);
 				break;
 			case COMMAND_TYPE_ERROR:
 				break;
 		}
 
-		free((void *)command.arguments);
+		command_drop(&command);
 	}
 
 	free(buffer);

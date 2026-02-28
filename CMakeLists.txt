@@ -6,7 +6,8 @@ project(
 	DESCRIPTION "a simple unix shell"
 )
 
-add_executable(lab_1 src/main.c)
+add_executable(lab_1 src/word.c src/arguments.c src/command.c src/main.c)
+target_include_directories(lab_1 PRIVATE include)
 target_compile_options(
 	lab_1
 	PRIVATE -Werror
