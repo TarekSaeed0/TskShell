@@ -279,12 +279,6 @@ bool parse_command(Command *command, const char **start) {
 
 	skip_whitespace(start);
 
-	// command must start with a word
-	if (!parse_word(&builder, start)) {
-		arguments_builder_drop(&builder);
-		return false;
-	}
-
 	command->execution_type = EXECUTION_TYPE_FOREGROUND;
 
 	while (true) {
@@ -308,7 +302,15 @@ bool parse_command(Command *command, const char **start) {
 		}
 	}
 
-	command->arguments    = arguments_builder_build(&builder);
+	Arguments arguments = arguments_builder_build(&builder);
+
+	if (arguments.length == 0) {
+		// a command must have at least one argument
+		arguments_drop(&arguments);
+		return false;
+	}
+
+	command->arguments    = arguments;
 	command->command_type = determine_command_type(command_name(command));
 
 	return true;
