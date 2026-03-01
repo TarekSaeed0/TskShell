@@ -29,9 +29,10 @@ void write_to_log_file(const char *message) {
 void on_child_exit(int signum) {
 	(void)signum;
 
+	// reap the child process
 	waitpid(-1, NULL, WNOHANG);
 
-	write_to_log_file("Child terminated");
+	write_to_log_file("Child process was terminated");
 }
 
 void setup_environment(void) {
@@ -41,6 +42,7 @@ void setup_environment(void) {
 void execute_shell_builtin(const Command *command) {
 	assert(command->command_type == COMMAND_TYPE_BUILTIN);
 
+	// linear search for the builtin command
 	for (size_t i = 0; i < builtins_count; i++) {
 		if (strcmp(command_name(command), builtins[i].name) == 0) {
 			builtins[i].function((int)command_arguments_count(command), command_arguments(command));
@@ -55,16 +57,23 @@ void execute_command(const Command *command) {
 	pid_t pid = fork();
 
 	if (pid == 0) {
+		// this is executing in the child process
+		// replace the child process with the command to be executed
 		execvp(command_name(command), command_arguments(command));
+		// we only get here if execvp failed
 		perror("Error");
 		exit(EXIT_FAILURE);
 	} else if (pid == -1) {
+		// fork failed
 		perror("Error");
 		exit(EXIT_FAILURE);
 	} else if (pid > 0 && command->execution_type == EXECUTION_TYPE_FOREGROUND) {
+		// this is executing in the parent process, and the command is executed in the foreground
+		// wait for the child process to finish
 		int status = 0;
 		waitpid(pid, &status, 0);
 
+		// check the return code of the child process
 		if (WIFEXITED(status)) {
 			int return_code = WEXITSTATUS(status);
 			if (return_code != 0) {
@@ -75,6 +84,7 @@ void execute_command(const Command *command) {
 }
 
 void shell(void) {
+	// declare the buffer for getline here so that it can be reused across inputs
 	char *buffer       = NULL;
 	size_t buffer_size = 0;
 
@@ -84,6 +94,7 @@ void shell(void) {
 			break;
 		}
 
+		// check if the input is only whitespace, and if so, skip it
 		bool is_only_whitespace = true;
 		for (ssize_t i = 0; i < read; i++) {
 			if (!isspace((unsigned char)buffer[i])) {
@@ -96,12 +107,14 @@ void shell(void) {
 			continue;
 		}
 
+		// parse the command from the input
 		Command command;
 		if (!command_parse(&command, buffer)) {
 			(void)fprintf(stderr, "Error: invalid syntax, failed to parse command\n");
 			continue;
 		}
 
+		// execute the parsed command
 		switch (command.command_type) {
 			case COMMAND_TYPE_BUILTIN:
 				execute_shell_builtin(&command);

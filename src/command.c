@@ -26,11 +26,9 @@ static inline void skip_whitespace(const char **start) {
 static inline bool is_identifier_start_character(char character) {
 	return isalpha((unsigned char)character) || character == '_';
 }
-
 static inline bool is_identifier_character(char character) {
 	return isalnum((unsigned char)character) || character == '_';
 }
-
 static bool parse_identifier(const char **identifier, size_t *identifier_length, const char **start) {
 	assert(identifier != NULL && identifier_length != NULL && start != NULL && *start != NULL);
 
@@ -70,6 +68,7 @@ static bool parse_expansion(const char **value, const char **start) {
 	const char *identifier   = NULL;
 	size_t identifier_length = 0;
 
+	// parse the identifier, which can be either in the form $identifier or ${identifier}
 	if (**start == '{') {
 		++*start;
 		if (!parse_identifier(&identifier, &identifier_length, start)) {
@@ -90,10 +89,11 @@ static bool parse_expansion(const char **value, const char **start) {
 		}
 	}
 
-	char *key = strndup(identifier, identifier_length);
-	*value    = get_environment_variable(key);
-	free(key);
+	char *name = strndup(identifier, identifier_length);
+	*value     = get_environment_variable(name);
+	free(name);
 
+	// the value of an undefined variable is treated as an empty string
 	if (*value == NULL) {
 		*value = "";
 	}
@@ -113,6 +113,7 @@ static bool parse_single_quoted(ArgumentsBuilder *builder, const char **start) {
 		return false;
 	}
 
+	// this is so that an empty single quoted string is treated as an empty argument
 	arguments_builder_ensure_in_argument(builder);
 
 	++*start;
@@ -145,6 +146,7 @@ static bool parse_double_quoted(ArgumentsBuilder *builder, const char **start) {
 		return false;
 	}
 
+	// this is so that an empty double quoted string is treated as an empty argument
 	arguments_builder_ensure_in_argument(builder);
 
 	++*start;
@@ -156,6 +158,7 @@ static bool parse_double_quoted(ArgumentsBuilder *builder, const char **start) {
 				return false;
 			}
 
+			// append the expanded value to the current argument without splitting
 			if (!arguments_builder_append_string(builder, value)) {
 				return false;
 			}
@@ -194,6 +197,8 @@ static bool parse_word_element(ArgumentsBuilder *builder, const char **start) {
 			return false;
 		}
 
+		// unquoted expansions are split into multiple arguments based on whitespace
+		// if the expansion consists only of whitespace, no arguments are added
 		while (*value != '\0') {
 			if (isspace((unsigned char)*value)) {
 				arguments_builder_end_argument(builder);
@@ -240,12 +245,14 @@ static bool parse_word_element(ArgumentsBuilder *builder, const char **start) {
 static bool parse_word(ArgumentsBuilder *builder, const char **start) {
 	assert(builder != NULL && start != NULL && *start != NULL);
 
+	// parse word elements until we encounter a character that can't start a word element
 	while (is_word_element_start(*start)) {
 		if (!parse_word_element(builder, start)) {
 			return false;
 		}
 	}
 
+	// end the current argument
 	if (!arguments_builder_end_argument(builder)) {
 		return false;
 	}
@@ -272,6 +279,7 @@ bool parse_command(Command *command, const char **start) {
 
 	skip_whitespace(start);
 
+	// command must start with a word
 	if (!parse_word(&builder, start)) {
 		arguments_builder_drop(&builder);
 		return false;
@@ -287,18 +295,20 @@ bool parse_command(Command *command, const char **start) {
 		}
 
 		if (**start == '&') {
+			// encountered &, which means the command should be executed in the background
 			++*start;
 			command->execution_type = EXECUTION_TYPE_BACKGROUND;
 			break;
 		}
 
+		// parse the next word
 		if (!parse_word(&builder, start)) {
 			arguments_builder_drop(&builder);
 			return false;
 		}
 	}
 
-	command->arguments    = builder.arguments;
+	command->arguments    = arguments_builder_build(&builder);
 	command->command_type = determine_command_type(command_name(command));
 
 	return true;
@@ -308,6 +318,8 @@ bool command_parse(Command *command, const char *string) {
 	if (!parse_command(command, &string)) {
 		return false;
 	}
+
+	// check if there's any non-whitespace characters left after parsing the command
 
 	skip_whitespace(&string);
 

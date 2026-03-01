@@ -28,7 +28,9 @@ void arguments_drop(Arguments *arguments) {
 bool arguments_reserve(Arguments *arguments, size_t additional) {
 	assert(arguments != NULL);
 
+	// the + 1 is for the null terminator
 	if (arguments->length + additional + 1 > arguments->capacity) {
+		// double the capacity until it is sufficient to hold the additional arguments
 		size_t new_capacity = arguments->capacity == 0 ? 1 : arguments->capacity * 2;
 		while (new_capacity < arguments->length + additional + 1) {
 			new_capacity *= 2;

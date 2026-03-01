@@ -16,12 +16,14 @@ typedef struct {
 
 /**
  * @brief Creates a new, empty arguments builder.
+ *
  * @return The created arguments builder.
  */
 ArgumentsBuilder arguments_builder_new(void);
 
 /**
  * @brief Releases resources held by the given arguments builder.
+ *
  * @param[inout] builder Pointer to the arguments builder to drop.
  */
 void arguments_builder_drop(ArgumentsBuilder *builder);
