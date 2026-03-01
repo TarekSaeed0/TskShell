@@ -6,7 +6,7 @@ project(
 	DESCRIPTION "a simple unix shell"
 )
 
-add_executable(lab_1 src/environment.c src/argument.c src/arguments.c src/arguments_builder.c src/command.c src/main.c)
+add_executable(lab_1 src/environment.c src/argument.c src/arguments.c src/arguments_builder.c src/command.c src/builtins.c src/main.c)
 target_include_directories(lab_1 PRIVATE include)
 target_compile_options(
 	lab_1

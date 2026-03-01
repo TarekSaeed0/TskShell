@@ -3,6 +3,7 @@
 #include <argument.h>
 #include <arguments.h>
 #include <arguments_builder.h>
+#include <builtins.h>
 #include <environment.h>
 
 #include <assert.h>
@@ -13,93 +14,6 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
-int builtin_cd(int argc, char **argv) {
-	char *home = getenv("HOME");
-	if (home == NULL) {
-		(void)fprintf(stderr, "Error: HOME environment variable is not set\n");
-		return EXIT_FAILURE;
-	}
-
-	if (argc == 1) {
-		if (chdir(home) == -1) {
-			perror("Error");
-			return EXIT_FAILURE;
-		}
-	} else if (argc == 2 && argv[1][0] == '~') {
-		size_t buffer_size = (size_t)snprintf(NULL, 0, "%s%s", home, argv[1] + 1);
-		char *buffer       = malloc(buffer_size + 1);
-		if (buffer == NULL) {
-			perror("Error");
-			exit(EXIT_FAILURE);
-		}
-
-		(void)snprintf(buffer, buffer_size + 1, "%s%s", home, argv[1] + 1);
-
-		if (chdir(buffer) == -1) {
-			perror("Error");
-			free(buffer);
-			return EXIT_FAILURE;
-		}
-
-		free(buffer);
-	} else {
-		if (chdir(argv[1]) == -1) {
-			perror("Error");
-			return EXIT_FAILURE;
-		}
-	}
-
-	return EXIT_SUCCESS;
-}
-
-int builtin_echo(int argc, char **argv) {
-	for (int i = 1; i < argc; i++) {
-		if (i > 1) {
-			printf(" ");
-		}
-		printf("%s", argv[i]);
-	}
-	printf("\n");
-
-	return EXIT_SUCCESS;
-}
-
-int builtin_export(int argc, char **argv) {
-	for (int i = 1; i < argc; i++) {
-		char *equal_sign = strchr(argv[i], '=');
-		if (equal_sign == NULL) {
-			(void)fprintf(stderr, "Usage: export <name>=<value>\n");
-			return EXIT_FAILURE;
-		}
-
-		*equal_sign       = '\0';
-		const char *name  = argv[i];
-		const char *value = equal_sign + 1;
-
-		if (!set_environment_variable(name, value)) {
-			perror("Error");
-			return EXIT_FAILURE;
-		}
-	}
-
-	return EXIT_SUCCESS;
-}
-
-int builtin_exit(int argc, char **argv) {
-	(void)argc, (void)argv;
-
-	exit(EXIT_SUCCESS);
-}
-
-const Builtin builtins[] = {
-	{ "cd", builtin_cd },
-	{ "echo", builtin_echo },
-	{ "export", builtin_export },
-	{ "exit", builtin_exit },
-};
-
-const size_t builtins_count = sizeof(builtins) / sizeof(*builtins);
 
 static inline void skip_whitespace(const char **start) {
 	assert(start != NULL && *start != NULL);
@@ -263,9 +177,14 @@ static bool parse_double_quoted(ArgumentsBuilder *builder, const char **start) {
 }
 
 static inline bool is_unquoted_character(char character) {
-	return character != '\0' && !isspace((unsigned char)character) && character != '\'' && character != '"' && character != '$' && character != '&';
+	return character != '\0' && !isspace((unsigned char)character) && character != '\'' && character != '"' && character != '&';
 }
 
+static bool is_word_element_start(const char *start) {
+	assert(start != NULL);
+
+	return is_expansion_start(start) || is_single_quoted_start(start) || is_double_quoted_start(start) || is_unquoted_character(*start);
+}
 static bool parse_word_element(ArgumentsBuilder *builder, const char **start) {
 	assert(builder != NULL && start != NULL && *start != NULL);
 
@@ -313,17 +232,15 @@ static bool parse_word_element(ArgumentsBuilder *builder, const char **start) {
 		}
 
 		++*start;
-
-		return true;
 	}
 
-	return false;
+	return true;
 }
 
 static bool parse_word(ArgumentsBuilder *builder, const char **start) {
 	assert(builder != NULL && start != NULL && *start != NULL);
 
-	while (**start != '\0' && !isspace((unsigned char)**start)) {
+	while (is_word_element_start(*start)) {
 		if (!parse_word_element(builder, start)) {
 			return false;
 		}
@@ -388,7 +305,13 @@ bool parse_command(Command *command, const char **start) {
 }
 
 bool command_parse(Command *command, const char *string) {
-	return parse_command(command, &string);
+	if (!parse_command(command, &string)) {
+		return false;
+	}
+
+	skip_whitespace(&string);
+
+	return *string == '\0';
 }
 
 void command_drop(Command *command) {

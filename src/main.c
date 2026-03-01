@@ -1,3 +1,4 @@
+#include <builtins.h>
 #include <command.h>
 
 #include <assert.h>

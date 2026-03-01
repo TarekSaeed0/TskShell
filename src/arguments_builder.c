@@ -15,6 +15,7 @@ void arguments_builder_drop(ArgumentsBuilder *builder) {
 
 	arguments_drop(&builder->arguments);
 	argument_drop(&builder->argument);
+	builder->in_argument = false;
 }
 
 bool arguments_builder_append_character(ArgumentsBuilder *builder, char character) {
@@ -51,6 +52,7 @@ bool arguments_builder_end_argument(ArgumentsBuilder *builder) {
 	}
 
 	if (builder->argument.length == 0) {
+		// call reserve to ensure that the empty argument's data isn't NULL, even if it's empty
 		if (!argument_reserve(&builder->argument, 0)) {
 			return false;
 		}
@@ -63,4 +65,16 @@ bool arguments_builder_end_argument(ArgumentsBuilder *builder) {
 	builder->in_argument = false;
 
 	return true;
+}
+
+Arguments arguments_builder_build(ArgumentsBuilder *builder) {
+	assert(builder != NULL);
+
+	Arguments arguments = builder->arguments;
+
+	builder->arguments  = arguments_new();
+	argument_drop(&builder->argument);
+	builder->in_argument = false;
+
+	return arguments;
 }

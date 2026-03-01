@@ -13,7 +13,7 @@ typedef struct {
 EnvironmentVariable *environment = NULL;
 
 const char *get_environment_variable(const char *name) {
-	EnvironmentVariable *variable;
+	EnvironmentVariable *variable = NULL;
 	HASH_FIND_STR(environment, name, variable);
 	if (variable != NULL) {
 		return variable->value;
@@ -22,9 +22,10 @@ const char *get_environment_variable(const char *name) {
 }
 
 bool set_environment_variable(const char *name, const char *value) {
-	EnvironmentVariable *variable;
+	EnvironmentVariable *variable = NULL;
 	HASH_FIND_STR(environment, name, variable);
 	if (variable == NULL) {
+		// environment variable didn't already exist, so we need to create it.
 		variable = malloc(sizeof(*variable));
 		if (variable == NULL) {
 			return false;
@@ -43,8 +44,10 @@ bool set_environment_variable(const char *name, const char *value) {
 			return false;
 		}
 
+		// add the created environment variable to the environment hash table.
 		HASH_ADD_KEYPTR(hh, environment, variable->name, strlen(variable->name), variable);
 	} else {
+		// environment variable already exists, overwrite its value.
 		char *value_copy = strdup(value);
 		if (value_copy == NULL) {
 			return false;
