@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>#{in_title_case(name)}#: Argument Struct Reference</title>
+  <title>TskShell: Argument Struct Reference</title>
   <!--BEGIN PROJECT_ICON-->
   <link rel="icon" href="$projecticon" type="image/x-icon" />
   <!--END PROJECT_ICON-->
@@ -39,10 +39,10 @@
           <tbody>
             <tr id="projectrow">
               <td id="projectalign">
-                <div id="projectname">#{in_title_case(name)}#<span
+                <div id="projectname">TskShell<span
                     id="projectnumber">&#160;0.0.1</span>
                 </div>
-                <div id="projectbrief">A project written in c</div>
+                <div id="projectbrief">A simple unix shell</div>
               </td>
             </tr>
           </tbody>
@@ -106,8 +106,8 @@ $(document).ready(function(){initNavTree('structArgument.html',''); initResizabl
 
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structArgument-members.html">List of all members</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle"><div class="title">Argument Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -117,21 +117,275 @@ $(document).ready(function(){initNavTree('structArgument.html',''); initResizabl
 
 <p><code>#include &lt;<a class="el" href="argument_8h_source.html">argument.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aa028cd64265dc343ec4a137379697240" id="r_aa028cd64265dc343ec4a137379697240"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structArgument.html">Argument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#aa028cd64265dc343ec4a137379697240">argument_new</a> (void)</td></tr>
+<tr class="memdesc:aa028cd64265dc343ec4a137379697240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new, empty argument.  <br /></td></tr>
+<tr class="separator:aa028cd64265dc343ec4a137379697240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cde2dc1497c33429db2465ad13fa9de" id="r_a3cde2dc1497c33429db2465ad13fa9de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#a3cde2dc1497c33429db2465ad13fa9de">argument_drop</a> (<a class="el" href="structArgument.html">Argument</a> *argument)</td></tr>
+<tr class="memdesc:a3cde2dc1497c33429db2465ad13fa9de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases resources held by the given argument.  <br /></td></tr>
+<tr class="separator:a3cde2dc1497c33429db2465ad13fa9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a3fc5a5df70927b5cb0b8e3d05945c5" id="r_a1a3fc5a5df70927b5cb0b8e3d05945c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#a1a3fc5a5df70927b5cb0b8e3d05945c5">argument_reserve</a> (<a class="el" href="structArgument.html">Argument</a> *argument, size_t additional)</td></tr>
+<tr class="memdesc:a1a3fc5a5df70927b5cb0b8e3d05945c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserves space for additional characters in the given argument.  <br /></td></tr>
+<tr class="separator:a1a3fc5a5df70927b5cb0b8e3d05945c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab402ac9dbe3b4d3d292f0a616435ee4c" id="r_ab402ac9dbe3b4d3d292f0a616435ee4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#ab402ac9dbe3b4d3d292f0a616435ee4c">argument_append_character</a> (<a class="el" href="structArgument.html">Argument</a> *argument, char character)</td></tr>
+<tr class="memdesc:ab402ac9dbe3b4d3d292f0a616435ee4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a character to the given argument.  <br /></td></tr>
+<tr class="separator:ab402ac9dbe3b4d3d292f0a616435ee4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae72946623a912ee5dbe964dfd4189be3" id="r_ae72946623a912ee5dbe964dfd4189be3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#ae72946623a912ee5dbe964dfd4189be3">argument_append_string</a> (<a class="el" href="structArgument.html">Argument</a> *argument, const char *string)</td></tr>
+<tr class="memdesc:ae72946623a912ee5dbe964dfd4189be3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a string to the given argument.  <br /></td></tr>
+<tr class="separator:ae72946623a912ee5dbe964dfd4189be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e239f667a5e71ae2979129b9f7b903c" id="r_a7e239f667a5e71ae2979129b9f7b903c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#a7e239f667a5e71ae2979129b9f7b903c">argument_take_data</a> (<a class="el" href="structArgument.html">Argument</a> *argument)</td></tr>
+<tr class="memdesc:a7e239f667a5e71ae2979129b9f7b903c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes ownership of the data of the given argument.  <br /></td></tr>
+<tr class="separator:a7e239f667a5e71ae2979129b9f7b903c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a5635e0e5c524e0314b1facd050b3ae28" id="r_a5635e0e5c524e0314b1facd050b3ae28"><td class="memItemLeft" align="right" valign="top"><a id="a5635e0e5c524e0314b1facd050b3ae28" name="a5635e0e5c524e0314b1facd050b3ae28"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
+Data Fields</h2></td></tr>
+<tr class="memitem:a5635e0e5c524e0314b1facd050b3ae28" id="r_a5635e0e5c524e0314b1facd050b3ae28"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#a5635e0e5c524e0314b1facd050b3ae28">data</a></td></tr>
 <tr class="separator:a5635e0e5c524e0314b1facd050b3ae28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad31229f437737e62b7cf186ca7a4402d" id="r_ad31229f437737e62b7cf186ca7a4402d"><td class="memItemLeft" align="right" valign="top"><a id="ad31229f437737e62b7cf186ca7a4402d" name="ad31229f437737e62b7cf186ca7a4402d"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>length</b></td></tr>
+<tr class="memitem:ad31229f437737e62b7cf186ca7a4402d" id="r_ad31229f437737e62b7cf186ca7a4402d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#ad31229f437737e62b7cf186ca7a4402d">length</a></td></tr>
 <tr class="separator:ad31229f437737e62b7cf186ca7a4402d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a906136d7eae3a97ea2ccf8a3f34e8fbc" id="r_a906136d7eae3a97ea2ccf8a3f34e8fbc"><td class="memItemLeft" align="right" valign="top"><a id="a906136d7eae3a97ea2ccf8a3f34e8fbc" name="a906136d7eae3a97ea2ccf8a3f34e8fbc"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></tr>
+<tr class="memitem:a906136d7eae3a97ea2ccf8a3f34e8fbc" id="r_a906136d7eae3a97ea2ccf8a3f34e8fbc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgument.html#a906136d7eae3a97ea2ccf8a3f34e8fbc">capacity</a></td></tr>
 <tr class="separator:a906136d7eae3a97ea2ccf8a3f34e8fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A command argument. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab402ac9dbe3b4d3d292f0a616435ee4c" name="ab402ac9dbe3b4d3d292f0a616435ee4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab402ac9dbe3b4d3d292f0a616435ee4c">&#9670;&#160;</a></span>argument_append_character()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool argument_append_character </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgument.html">Argument</a> *&#160;</td>
+          <td class="paramname"><em>argument</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>character</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appends a character to the given argument. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">argument</td><td>Pointer to the argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">character</td><td>The character to be appended. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ae72946623a912ee5dbe964dfd4189be3" name="ae72946623a912ee5dbe964dfd4189be3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae72946623a912ee5dbe964dfd4189be3">&#9670;&#160;</a></span>argument_append_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool argument_append_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgument.html">Argument</a> *&#160;</td>
+          <td class="paramname"><em>argument</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appends a string to the given argument. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">argument</td><td>Pointer to the argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string</td><td>The string to be appended. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a3cde2dc1497c33429db2465ad13fa9de" name="a3cde2dc1497c33429db2465ad13fa9de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cde2dc1497c33429db2465ad13fa9de">&#9670;&#160;</a></span>argument_drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void argument_drop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgument.html">Argument</a> *&#160;</td>
+          <td class="paramname"><em>argument</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Releases resources held by the given argument. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">argument</td><td>Pointer to the argument to drop. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa028cd64265dc343ec4a137379697240" name="aa028cd64265dc343ec4a137379697240"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa028cd64265dc343ec4a137379697240">&#9670;&#160;</a></span>argument_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structArgument.html">Argument</a> argument_new </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a new, empty argument. </p>
+<dl class="section return"><dt>Returns</dt><dd>The created argument. </dd></dl>
+
+</div>
+</div>
+<a id="a1a3fc5a5df70927b5cb0b8e3d05945c5" name="a1a3fc5a5df70927b5cb0b8e3d05945c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a3fc5a5df70927b5cb0b8e3d05945c5">&#9670;&#160;</a></span>argument_reserve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool argument_reserve </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgument.html">Argument</a> *&#160;</td>
+          <td class="paramname"><em>argument</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>additional</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reserves space for additional characters in the given argument. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">argument</td><td>Pointer to the argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">additional</td><td>The number of additional characters to reserve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a7e239f667a5e71ae2979129b9f7b903c" name="a7e239f667a5e71ae2979129b9f7b903c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e239f667a5e71ae2979129b9f7b903c">&#9670;&#160;</a></span>argument_take_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * argument_take_data </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgument.html">Argument</a> *&#160;</td>
+          <td class="paramname"><em>argument</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Takes ownership of the data of the given argument. </p>
+<p>after this, the argument is reset to an empty state, and doesn't need to be dropped. the caller is responsible for dropping the returned data when it's no longer needed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">argument</td><td>Pointer to the argument. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the data, or NULL if the argument is empty. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a906136d7eae3a97ea2ccf8a3f34e8fbc" name="a906136d7eae3a97ea2ccf8a3f34e8fbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906136d7eae3a97ea2ccf8a3f34e8fbc">&#9670;&#160;</a></span>capacity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Argument::capacity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated capacity of the argument excluding the null terminator. </p>
+
+</div>
+</div>
+<a id="a5635e0e5c524e0314b1facd050b3ae28" name="a5635e0e5c524e0314b1facd050b3ae28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5635e0e5c524e0314b1facd050b3ae28">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* Argument::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The data of the argument. </p>
+
+</div>
+</div>
+<a id="ad31229f437737e62b7cf186ca7a4402d" name="ad31229f437737e62b7cf186ca7a4402d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad31229f437737e62b7cf186ca7a4402d">&#9670;&#160;</a></span>length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Argument::length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The length of the argument excluding the null terminator. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/github/workspace/include/<a class="el" href="argument_8h_source.html">argument.h</a></li>
 </ul>
 </div><!-- contents -->

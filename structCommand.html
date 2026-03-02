@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>#{in_title_case(name)}#: Command Struct Reference</title>
+  <title>TskShell: Command Struct Reference</title>
   <!--BEGIN PROJECT_ICON-->
   <link rel="icon" href="$projecticon" type="image/x-icon" />
   <!--END PROJECT_ICON-->
@@ -39,10 +39,10 @@
           <tbody>
             <tr id="projectrow">
               <td id="projectalign">
-                <div id="projectname">#{in_title_case(name)}#<span
+                <div id="projectname">TskShell<span
                     id="projectnumber">&#160;0.0.1</span>
                 </div>
-                <div id="projectbrief">A project written in c</div>
+                <div id="projectbrief">A simple unix shell</div>
               </td>
             </tr>
           </tbody>
@@ -106,8 +106,8 @@ $(document).ready(function(){initNavTree('structCommand.html',''); initResizable
 
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structCommand-members.html">List of all members</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle"><div class="title">Command Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -117,21 +117,243 @@ $(document).ready(function(){initNavTree('structCommand.html',''); initResizable
 
 <p><code>#include &lt;<a class="el" href="command_8h_source.html">command.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5b95efe1fdfa315b396f8901449ff6b5" id="r_a5b95efe1fdfa315b396f8901449ff6b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCommand.html#a5b95efe1fdfa315b396f8901449ff6b5">command_parse</a> (<a class="el" href="structCommand.html">Command</a> *command, const char *string)</td></tr>
+<tr class="memdesc:a5b95efe1fdfa315b396f8901449ff6b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses command from string.  <br /></td></tr>
+<tr class="separator:a5b95efe1fdfa315b396f8901449ff6b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8748f3fe8d559ddacf72f4feb94e417" id="r_ac8748f3fe8d559ddacf72f4feb94e417"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCommand.html#ac8748f3fe8d559ddacf72f4feb94e417">command_drop</a> (<a class="el" href="structCommand.html">Command</a> *command)</td></tr>
+<tr class="memdesc:ac8748f3fe8d559ddacf72f4feb94e417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases resources held by the given command.  <br /></td></tr>
+<tr class="separator:ac8748f3fe8d559ddacf72f4feb94e417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e10d8a97e789c66c881e74f2d22585" id="r_aa5e10d8a97e789c66c881e74f2d22585"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCommand.html#aa5e10d8a97e789c66c881e74f2d22585">command_name</a> (const <a class="el" href="structCommand.html">Command</a> *command)</td></tr>
+<tr class="memdesc:aa5e10d8a97e789c66c881e74f2d22585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the given command.  <br /></td></tr>
+<tr class="separator:aa5e10d8a97e789c66c881e74f2d22585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01837770ecd6985dbad60083f3144707" id="r_a01837770ecd6985dbad60083f3144707"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCommand.html#a01837770ecd6985dbad60083f3144707">command_arguments</a> (const <a class="el" href="structCommand.html">Command</a> *command)</td></tr>
+<tr class="memdesc:a01837770ecd6985dbad60083f3144707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the arguments of the given command.  <br /></td></tr>
+<tr class="separator:a01837770ecd6985dbad60083f3144707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b14a7c648cdc349163bd7c8fa6880e0" id="r_a6b14a7c648cdc349163bd7c8fa6880e0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCommand.html#a6b14a7c648cdc349163bd7c8fa6880e0">command_arguments_count</a> (const <a class="el" href="structCommand.html">Command</a> *command)</td></tr>
+<tr class="memdesc:a6b14a7c648cdc349163bd7c8fa6880e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of arguments in the given command.  <br /></td></tr>
+<tr class="separator:a6b14a7c648cdc349163bd7c8fa6880e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ab4568156981b984d25e4716863e1608e" id="r_ab4568156981b984d25e4716863e1608e"><td class="memItemLeft" align="right" valign="top"><a id="ab4568156981b984d25e4716863e1608e" name="ab4568156981b984d25e4716863e1608e"></a>
-<a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight" valign="bottom"><b>arguments</b></td></tr>
+Data Fields</h2></td></tr>
+<tr class="memitem:ab4568156981b984d25e4716863e1608e" id="r_ab4568156981b984d25e4716863e1608e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCommand.html#ab4568156981b984d25e4716863e1608e">arguments</a></td></tr>
 <tr class="separator:ab4568156981b984d25e4716863e1608e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afedc487afc58ebf881809a151ba71830" id="r_afedc487afc58ebf881809a151ba71830"><td class="memItemLeft" align="right" valign="top"><a id="afedc487afc58ebf881809a151ba71830" name="afedc487afc58ebf881809a151ba71830"></a>
-CommandType&#160;</td><td class="memItemRight" valign="bottom"><b>command_type</b></td></tr>
+<tr class="memitem:afedc487afc58ebf881809a151ba71830" id="r_afedc487afc58ebf881809a151ba71830"><td class="memItemLeft" align="right" valign="top"><a class="el" href="command_8h.html#a21e038f5b8958e203d28bc4f18472352">CommandType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCommand.html#afedc487afc58ebf881809a151ba71830">command_type</a></td></tr>
 <tr class="separator:afedc487afc58ebf881809a151ba71830"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e7d0959b9a5fc9df30e12598f0f3aae" id="r_a9e7d0959b9a5fc9df30e12598f0f3aae"><td class="memItemLeft" align="right" valign="top"><a id="a9e7d0959b9a5fc9df30e12598f0f3aae" name="a9e7d0959b9a5fc9df30e12598f0f3aae"></a>
-ExecutionType&#160;</td><td class="memItemRight" valign="bottom"><b>execution_type</b></td></tr>
+<tr class="memitem:a9e7d0959b9a5fc9df30e12598f0f3aae" id="r_a9e7d0959b9a5fc9df30e12598f0f3aae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="command_8h.html#adf951f6e447d6065a967409a1bd3fab3">ExecutionType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCommand.html#a9e7d0959b9a5fc9df30e12598f0f3aae">execution_type</a></td></tr>
 <tr class="separator:a9e7d0959b9a5fc9df30e12598f0f3aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A shell command. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a01837770ecd6985dbad60083f3144707" name="a01837770ecd6985dbad60083f3144707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01837770ecd6985dbad60083f3144707">&#9670;&#160;</a></span>command_arguments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ** command_arguments </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structCommand.html">Command</a> *&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the arguments of the given command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>Pointer to the command. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The null-terminated list of arguments. </dd></dl>
+
+</div>
+</div>
+<a id="a6b14a7c648cdc349163bd7c8fa6880e0" name="a6b14a7c648cdc349163bd7c8fa6880e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b14a7c648cdc349163bd7c8fa6880e0">&#9670;&#160;</a></span>command_arguments_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t command_arguments_count </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structCommand.html">Command</a> *&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the number of arguments in the given command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>Pointer to the command. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of arguments. </dd></dl>
+
+</div>
+</div>
+<a id="ac8748f3fe8d559ddacf72f4feb94e417" name="ac8748f3fe8d559ddacf72f4feb94e417"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8748f3fe8d559ddacf72f4feb94e417">&#9670;&#160;</a></span>command_drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void command_drop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCommand.html">Command</a> *&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Releases resources held by the given command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">command</td><td>Pointer to the command to drop. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa5e10d8a97e789c66c881e74f2d22585" name="aa5e10d8a97e789c66c881e74f2d22585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e10d8a97e789c66c881e74f2d22585">&#9670;&#160;</a></span>command_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * command_name </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structCommand.html">Command</a> *&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the name of the given command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>Pointer to the command. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The name of the command. </dd></dl>
+
+</div>
+</div>
+<a id="a5b95efe1fdfa315b396f8901449ff6b5" name="a5b95efe1fdfa315b396f8901449ff6b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b95efe1fdfa315b396f8901449ff6b5">&#9670;&#160;</a></span>command_parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool command_parse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCommand.html">Command</a> *&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parses command from string. </p>
+<hr  />
+ <h1><a class="anchor" id="autotoc_md1"></a>
+Command Syntax</h1>
+<p>command = word , { word }, [ &amp; ] ; word = { word_element } ;</p>
+<p>word_element = unquoted_character | single_quoted | double_quoted | expansion ;</p>
+<p>unquoted_character = ? any character except whitespace, ', ", &amp; and $ ? ;
+single_quoted        = "'" , { single_quoted_character } , "'" ;
+double_quoted        = '"' , { double_quoted_character | expansion } , '"' ;</p>
+<p>single_quoted_character = ? any character except ' ? ; double_quoted_character = ? any character except " and $ ? ;
+
+expansion      = "$" , ( identifier | "{" , identifier , "}" ) ;
+
+identifier     = letter | "_", { letter | digit | "_" } ;
+letter         = "a".."z" | "A".."Z" ;
+digit          = "0".."9" ;</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">command</td><td>Pointer to store the parsed command. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string</td><td>The string to be parsed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="ab4568156981b984d25e4716863e1608e" name="ab4568156981b984d25e4716863e1608e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4568156981b984d25e4716863e1608e">&#9670;&#160;</a></span>arguments</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structArguments.html">Arguments</a> Command::arguments</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The list of arguments for the command, where the first argument is the command name. </p>
+
+</div>
+</div>
+<a id="afedc487afc58ebf881809a151ba71830" name="afedc487afc58ebf881809a151ba71830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afedc487afc58ebf881809a151ba71830">&#9670;&#160;</a></span>command_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="command_8h.html#a21e038f5b8958e203d28bc4f18472352">CommandType</a> Command::command_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The type of the command (built-in or executable). </p>
+
+</div>
+</div>
+<a id="a9e7d0959b9a5fc9df30e12598f0f3aae" name="a9e7d0959b9a5fc9df30e12598f0f3aae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e7d0959b9a5fc9df30e12598f0f3aae">&#9670;&#160;</a></span>execution_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="command_8h.html#adf951f6e447d6065a967409a1bd3fab3">ExecutionType</a> Command::execution_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The execution type of the command (foreground or background). </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/github/workspace/include/<a class="el" href="command_8h_source.html">command.h</a></li>
 </ul>
 </div><!-- contents -->

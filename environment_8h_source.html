@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>#{in_title_case(name)}#: /github/workspace/include/environment.h Source File</title>
+  <title>TskShell: /github/workspace/include/environment.h Source File</title>
   <!--BEGIN PROJECT_ICON-->
   <link rel="icon" href="$projecticon" type="image/x-icon" />
   <!--END PROJECT_ICON-->
@@ -39,10 +39,10 @@
           <tbody>
             <tr id="projectrow">
               <td id="projectalign">
-                <div id="projectname">#{in_title_case(name)}#<span
+                <div id="projectname">TskShell<span
                     id="projectnumber">&#160;0.0.1</span>
                 </div>
-                <div id="projectbrief">A project written in c</div>
+                <div id="projectbrief">A simple unix shell</div>
               </td>
             </tr>
           </tbody>
@@ -113,22 +113,25 @@ $(document).ready(function(){initNavTree('environment_8h_source.html',''); initR
   <div class="headertitle"><div class="title">environment.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ENVIRONMENT_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ENVIRONMENT_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">const</span> <span class="keywordtype">char</span> *get_environment_variable(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">bool</span> set_environment_variable(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *value);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
+<a href="environment_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef ENVIRONMENT_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define ENVIRONMENT_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="environment_8h.html#a9fd28e07ef26ab73046b67a1a0fb6f8d">   19</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="environment_8h.html#a9fd28e07ef26ab73046b67a1a0fb6f8d">get_environment_variable</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="environment_8h.html#a51c35ac2570b4240fec129a3a5631030">   28</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="environment_8h.html#a51c35ac2570b4240fec129a3a5631030">set_environment_variable</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *value);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aenvironment_8h_html_a51c35ac2570b4240fec129a3a5631030"><div class="ttname"><a href="environment_8h.html#a51c35ac2570b4240fec129a3a5631030">set_environment_variable</a></div><div class="ttdeci">bool set_environment_variable(const char *name, const char *value)</div><div class="ttdoc">Sets the value of the environment variable with the given name to the given value.</div></div>
+<div class="ttc" id="aenvironment_8h_html_a9fd28e07ef26ab73046b67a1a0fb6f8d"><div class="ttname"><a href="environment_8h.html#a9fd28e07ef26ab73046b67a1a0fb6f8d">get_environment_variable</a></div><div class="ttdeci">const char * get_environment_variable(const char *name)</div><div class="ttdoc">Gets the value of the environment variable with the given name.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>environment.h</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="environment_8h.html">environment.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

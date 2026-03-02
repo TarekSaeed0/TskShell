@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>#{in_title_case(name)}#: Builtin Struct Reference</title>
+  <title>TskShell: Builtin Struct Reference</title>
   <!--BEGIN PROJECT_ICON-->
   <link rel="icon" href="$projecticon" type="image/x-icon" />
   <!--END PROJECT_ICON-->
@@ -39,10 +39,10 @@
           <tbody>
             <tr id="projectrow">
               <td id="projectalign">
-                <div id="projectname">#{in_title_case(name)}#<span
+                <div id="projectname">TskShell<span
                     id="projectnumber">&#160;0.0.1</span>
                 </div>
-                <div id="projectbrief">A project written in c</div>
+                <div id="projectbrief">A simple unix shell</div>
               </td>
             </tr>
           </tbody>
@@ -106,29 +106,57 @@ $(document).ready(function(){initNavTree('structBuiltin.html',''); initResizable
 
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structBuiltin-members.html">List of all members</a>  </div>
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle"><div class="title">Builtin Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>A shell builtin command.  
+<p>A shell built-in command.  
  <a href="structBuiltin.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="builtins_8h_source.html">builtins.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a672384c10b5f474d62eed077a89d80fa" id="r_a672384c10b5f474d62eed077a89d80fa"><td class="memItemLeft" align="right" valign="top"><a id="a672384c10b5f474d62eed077a89d80fa" name="a672384c10b5f474d62eed077a89d80fa"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+Data Fields</h2></td></tr>
+<tr class="memitem:a672384c10b5f474d62eed077a89d80fa" id="r_a672384c10b5f474d62eed077a89d80fa"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBuiltin.html#a672384c10b5f474d62eed077a89d80fa">name</a></td></tr>
 <tr class="separator:a672384c10b5f474d62eed077a89d80fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20970960710be7650037f6a5c3de33dd" id="r_a20970960710be7650037f6a5c3de33dd"><td class="memItemLeft" align="right" valign="top"><a id="a20970960710be7650037f6a5c3de33dd" name="a20970960710be7650037f6a5c3de33dd"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><b>function</b> )(int argc, char **argv)</td></tr>
+<tr class="memitem:a20970960710be7650037f6a5c3de33dd" id="r_a20970960710be7650037f6a5c3de33dd"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBuiltin.html#a20970960710be7650037f6a5c3de33dd">function</a> )(int argc, char **argv)</td></tr>
 <tr class="separator:a20970960710be7650037f6a5c3de33dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A shell builtin command. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>A shell built-in command. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="a20970960710be7650037f6a5c3de33dd" name="a20970960710be7650037f6a5c3de33dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20970960710be7650037f6a5c3de33dd">&#9670;&#160;</a></span>function</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int(* Builtin::function) (int argc, char **argv)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The function implementing the built-in command. </p>
+
+</div>
+</div>
+<a id="a672384c10b5f474d62eed077a89d80fa" name="a672384c10b5f474d62eed077a89d80fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a672384c10b5f474d62eed077a89d80fa">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Builtin::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The name of the built-in command. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/github/workspace/include/<a class="el" href="builtins_8h_source.html">builtins.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>#{in_title_case(name)}#: ArgumentsBuilder Struct Reference</title>
+  <title>TskShell: ArgumentsBuilder Struct Reference</title>
   <!--BEGIN PROJECT_ICON-->
   <link rel="icon" href="$projecticon" type="image/x-icon" />
   <!--END PROJECT_ICON-->
@@ -39,10 +39,10 @@
           <tbody>
             <tr id="projectrow">
               <td id="projectalign">
-                <div id="projectname">#{in_title_case(name)}#<span
+                <div id="projectname">TskShell<span
                     id="projectnumber">&#160;0.0.1</span>
                 </div>
-                <div id="projectbrief">A project written in c</div>
+                <div id="projectbrief">A simple unix shell</div>
               </td>
             </tr>
           </tbody>
@@ -106,8 +106,8 @@ $(document).ready(function(){initNavTree('structArgumentsBuilder.html',''); init
 
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structArgumentsBuilder-members.html">List of all members</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle"><div class="title">ArgumentsBuilder Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -117,21 +117,297 @@ $(document).ready(function(){initNavTree('structArgumentsBuilder.html',''); init
 
 <p><code>#include &lt;<a class="el" href="arguments__builder_8h_source.html">arguments_builder.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad8659bf92df7b48f3ae8e3f62ee026c6" id="r_ad8659bf92df7b48f3ae8e3f62ee026c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#ad8659bf92df7b48f3ae8e3f62ee026c6">arguments_builder_new</a> (void)</td></tr>
+<tr class="memdesc:ad8659bf92df7b48f3ae8e3f62ee026c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new, empty arguments builder.  <br /></td></tr>
+<tr class="separator:ad8659bf92df7b48f3ae8e3f62ee026c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2864b3222e7754352081dd4533df5cf" id="r_aa2864b3222e7754352081dd4533df5cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#aa2864b3222e7754352081dd4533df5cf">arguments_builder_drop</a> (<a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder)</td></tr>
+<tr class="memdesc:aa2864b3222e7754352081dd4533df5cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases resources held by the given arguments builder.  <br /></td></tr>
+<tr class="separator:aa2864b3222e7754352081dd4533df5cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad686f5ed78c7b31e1d36f9a18847bf10" id="r_ad686f5ed78c7b31e1d36f9a18847bf10"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#ad686f5ed78c7b31e1d36f9a18847bf10">arguments_builder_append_character</a> (<a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder, char character)</td></tr>
+<tr class="memdesc:ad686f5ed78c7b31e1d36f9a18847bf10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a character to the current argument in the arguments builder.  <br /></td></tr>
+<tr class="separator:ad686f5ed78c7b31e1d36f9a18847bf10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f06715291081649c232a08761a385f3" id="r_a3f06715291081649c232a08761a385f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#a3f06715291081649c232a08761a385f3">arguments_builder_append_string</a> (<a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder, const char *string)</td></tr>
+<tr class="memdesc:a3f06715291081649c232a08761a385f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a string to the current argument in the arguments builder.  <br /></td></tr>
+<tr class="separator:a3f06715291081649c232a08761a385f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67f9ff25f1d73ce79097d3f33d8ff5c5" id="r_a67f9ff25f1d73ce79097d3f33d8ff5c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#a67f9ff25f1d73ce79097d3f33d8ff5c5">arguments_builder_ensure_in_argument</a> (<a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder)</td></tr>
+<tr class="memdesc:a67f9ff25f1d73ce79097d3f33d8ff5c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the arguments builder is in an argument.  <br /></td></tr>
+<tr class="separator:a67f9ff25f1d73ce79097d3f33d8ff5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bea2ff810580f64e59a519dfc5a2dc6" id="r_a0bea2ff810580f64e59a519dfc5a2dc6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#a0bea2ff810580f64e59a519dfc5a2dc6">arguments_builder_end_argument</a> (<a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder)</td></tr>
+<tr class="memdesc:a0bea2ff810580f64e59a519dfc5a2dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends the current argument in the arguments builder.  <br /></td></tr>
+<tr class="separator:a0bea2ff810580f64e59a519dfc5a2dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0c1130d4b05aad91d11c638ac5089ee" id="r_ae0c1130d4b05aad91d11c638ac5089ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#ae0c1130d4b05aad91d11c638ac5089ee">arguments_builder_build</a> (<a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder)</td></tr>
+<tr class="memdesc:ae0c1130d4b05aad91d11c638ac5089ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the final list of arguments from the arguments builder.  <br /></td></tr>
+<tr class="separator:ae0c1130d4b05aad91d11c638ac5089ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a0039c3337c7405238bb9f5b270dbe5ef" id="r_a0039c3337c7405238bb9f5b270dbe5ef"><td class="memItemLeft" align="right" valign="top"><a id="a0039c3337c7405238bb9f5b270dbe5ef" name="a0039c3337c7405238bb9f5b270dbe5ef"></a>
-<a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight" valign="bottom"><b>arguments</b></td></tr>
+Data Fields</h2></td></tr>
+<tr class="memitem:a0039c3337c7405238bb9f5b270dbe5ef" id="r_a0039c3337c7405238bb9f5b270dbe5ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structArguments.html">Arguments</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#a0039c3337c7405238bb9f5b270dbe5ef">arguments</a></td></tr>
 <tr class="separator:a0039c3337c7405238bb9f5b270dbe5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58b4759cb417192ab556519d7e00aef7" id="r_a58b4759cb417192ab556519d7e00aef7"><td class="memItemLeft" align="right" valign="top"><a id="a58b4759cb417192ab556519d7e00aef7" name="a58b4759cb417192ab556519d7e00aef7"></a>
-<a class="el" href="structArgument.html">Argument</a>&#160;</td><td class="memItemRight" valign="bottom"><b>argument</b></td></tr>
+<tr class="memitem:a58b4759cb417192ab556519d7e00aef7" id="r_a58b4759cb417192ab556519d7e00aef7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structArgument.html">Argument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#a58b4759cb417192ab556519d7e00aef7">argument</a></td></tr>
 <tr class="separator:a58b4759cb417192ab556519d7e00aef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a02f24df64db956d7f41d392502ac40" id="r_a0a02f24df64db956d7f41d392502ac40"><td class="memItemLeft" align="right" valign="top"><a id="a0a02f24df64db956d7f41d392502ac40" name="a0a02f24df64db956d7f41d392502ac40"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>in_argument</b></td></tr>
+<tr class="memitem:a0a02f24df64db956d7f41d392502ac40" id="r_a0a02f24df64db956d7f41d392502ac40"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArgumentsBuilder.html#a0a02f24df64db956d7f41d392502ac40">in_argument</a></td></tr>
 <tr class="separator:a0a02f24df64db956d7f41d392502ac40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A builder for building a list of arguments incrementally. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad686f5ed78c7b31e1d36f9a18847bf10" name="ad686f5ed78c7b31e1d36f9a18847bf10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad686f5ed78c7b31e1d36f9a18847bf10">&#9670;&#160;</a></span>arguments_builder_append_character()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool arguments_builder_append_character </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *&#160;</td>
+          <td class="paramname"><em>builder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>character</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appends a character to the current argument in the arguments builder. </p>
+<p>if the arguments builder wasn't in an argument already, this starts a new argument.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">builder</td><td>Pointer to the arguments builder. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">character</td><td>The character to be appended </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a3f06715291081649c232a08761a385f3" name="a3f06715291081649c232a08761a385f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f06715291081649c232a08761a385f3">&#9670;&#160;</a></span>arguments_builder_append_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool arguments_builder_append_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *&#160;</td>
+          <td class="paramname"><em>builder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appends a string to the current argument in the arguments builder. </p>
+<p>if the arguments builder wasn't in an argument already, this starts a new argument.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">builder</td><td>Pointer to the arguments builder. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string</td><td>The string to be appended </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ae0c1130d4b05aad91d11c638ac5089ee" name="ae0c1130d4b05aad91d11c638ac5089ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0c1130d4b05aad91d11c638ac5089ee">&#9670;&#160;</a></span>arguments_builder_build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structArguments.html">Arguments</a> arguments_builder_build </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *&#160;</td>
+          <td class="paramname"><em>builder</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Builds the final list of arguments from the arguments builder. </p>
+<p>if arguments builder is still in an argument, this discards it. after this, the arguments builder is reset to an empty state, and doesn't need to be dropped. the caller is responsible for dropping the returned <a class="el" href="structArguments.html" title="A list of command arguments.">Arguments</a> struct when it's no longer needed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">builder</td><td>Pointer to the arguments builder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The built list of arguments. </dd></dl>
+
+</div>
+</div>
+<a id="aa2864b3222e7754352081dd4533df5cf" name="aa2864b3222e7754352081dd4533df5cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2864b3222e7754352081dd4533df5cf">&#9670;&#160;</a></span>arguments_builder_drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void arguments_builder_drop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *&#160;</td>
+          <td class="paramname"><em>builder</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Releases resources held by the given arguments builder. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">builder</td><td>Pointer to the arguments builder to drop. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0bea2ff810580f64e59a519dfc5a2dc6" name="a0bea2ff810580f64e59a519dfc5a2dc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bea2ff810580f64e59a519dfc5a2dc6">&#9670;&#160;</a></span>arguments_builder_end_argument()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool arguments_builder_end_argument </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *&#160;</td>
+          <td class="paramname"><em>builder</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ends the current argument in the arguments builder. </p>
+<p>if the arguments builder wasn't in an argument already, this does nothing. after this, the arguments builder won't be in an argument anymore.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">builder</td><td>Pointer to the arguments builder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a67f9ff25f1d73ce79097d3f33d8ff5c5" name="a67f9ff25f1d73ce79097d3f33d8ff5c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67f9ff25f1d73ce79097d3f33d8ff5c5">&#9670;&#160;</a></span>arguments_builder_ensure_in_argument()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void arguments_builder_ensure_in_argument </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *&#160;</td>
+          <td class="paramname"><em>builder</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ensures that the arguments builder is in an argument. </p>
+<p>if the arguments builder wasn't in an argument already, this starts a new argument. this is useful when the caller wants an empty argument, which can't be created by appending characters or strings.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">builder</td><td>Pointer to the arguments builder. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad8659bf92df7b48f3ae8e3f62ee026c6" name="ad8659bf92df7b48f3ae8e3f62ee026c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8659bf92df7b48f3ae8e3f62ee026c6">&#9670;&#160;</a></span>arguments_builder_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structArgumentsBuilder.html">ArgumentsBuilder</a> arguments_builder_new </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a new, empty arguments builder. </p>
+<dl class="section return"><dt>Returns</dt><dd>The created arguments builder. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a58b4759cb417192ab556519d7e00aef7" name="a58b4759cb417192ab556519d7e00aef7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58b4759cb417192ab556519d7e00aef7">&#9670;&#160;</a></span>argument</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structArgument.html">Argument</a> ArgumentsBuilder::argument</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The current argument being built. </p>
+
+</div>
+</div>
+<a id="a0039c3337c7405238bb9f5b270dbe5ef" name="a0039c3337c7405238bb9f5b270dbe5ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0039c3337c7405238bb9f5b270dbe5ef">&#9670;&#160;</a></span>arguments</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structArguments.html">Arguments</a> ArgumentsBuilder::arguments</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The list of arguments being built. </p>
+
+</div>
+</div>
+<a id="a0a02f24df64db956d7f41d392502ac40" name="a0a02f24df64db956d7f41d392502ac40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a02f24df64db956d7f41d392502ac40">&#9670;&#160;</a></span>in_argument</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ArgumentsBuilder::in_argument</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether the builder is currently building an argument. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/github/workspace/include/<a class="el" href="arguments__builder_8h_source.html">arguments_builder.h</a></li>
 </ul>
 </div><!-- contents -->

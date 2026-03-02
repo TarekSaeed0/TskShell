@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>#{in_title_case(name)}#: /github/workspace/include/arguments_builder.h Source File</title>
+  <title>TskShell: /github/workspace/include/arguments_builder.h Source File</title>
   <!--BEGIN PROJECT_ICON-->
   <link rel="icon" href="$projecticon" type="image/x-icon" />
   <!--END PROJECT_ICON-->
@@ -39,10 +39,10 @@
           <tbody>
             <tr id="projectrow">
               <td id="projectalign">
-                <div id="projectname">#{in_title_case(name)}#<span
+                <div id="projectname">TskShell<span
                     id="projectnumber">&#160;0.0.1</span>
                 </div>
-                <div id="projectbrief">A project written in c</div>
+                <div id="projectbrief">A simple unix shell</div>
               </td>
             </tr>
           </tbody>
@@ -113,44 +113,57 @@ $(document).ready(function(){initNavTree('arguments__builder_8h_source.html','')
   <div class="headertitle"><div class="title">arguments_builder.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ARGUMENTS_BUILDER_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ARGUMENTS_BUILDER_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;argument.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;arguments.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_struct" href="structArguments.html">Arguments</a> arguments;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_struct" href="structArgument.html">Argument</a> argument;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">bool</span> in_argument;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>} <a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a>;</div>
+<a href="arguments__builder_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef ARGUMENTS_BUILDER_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define ARGUMENTS_BUILDER_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="argument_8h.html">argument.h</a>&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="arguments_8h.html">arguments.h</a>&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html">   18</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#a0039c3337c7405238bb9f5b270dbe5ef">   19</a></span>  <a class="code hl_struct" href="structArguments.html">Arguments</a> <a class="code hl_variable" href="structArgumentsBuilder.html#a0039c3337c7405238bb9f5b270dbe5ef">arguments</a>; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#a58b4759cb417192ab556519d7e00aef7">   20</a></span>  <a class="code hl_struct" href="structArgument.html">Argument</a> <a class="code hl_variable" href="structArgumentsBuilder.html#a58b4759cb417192ab556519d7e00aef7">argument</a>;   </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#a0a02f24df64db956d7f41d392502ac40">   21</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="structArgumentsBuilder.html#a0a02f24df64db956d7f41d392502ac40">in_argument</a>;    </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>} <a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a>;</div>
 </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> arguments_builder_new(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keywordtype">void</span> arguments_builder_drop(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">bool</span> arguments_builder_append_character(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder, <span class="keywordtype">char</span> character);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#ad8659bf92df7b48f3ae8e3f62ee026c6">   31</a></span><a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> <a class="code hl_function" href="structArgumentsBuilder.html#ad8659bf92df7b48f3ae8e3f62ee026c6">arguments_builder_new</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#aa2864b3222e7754352081dd4533df5cf">   40</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="structArgumentsBuilder.html#aa2864b3222e7754352081dd4533df5cf">arguments_builder_drop</a>(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder);</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">bool</span> arguments_builder_append_string(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">void</span> arguments_builder_ensure_in_argument(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keywordtype">bool</span> arguments_builder_end_argument(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><a class="code hl_struct" href="structArguments.html">Arguments</a> arguments_builder_build(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#endif </span><span class="comment">// ARGUMENTS_BUILDER_H</span></div>
-<div class="ttc" id="astructArgument_html"><div class="ttname"><a href="structArgument.html">Argument</a></div><div class="ttdoc">A command argument.</div><div class="ttdef"><b>Definition</b> argument.h:11</div></div>
-<div class="ttc" id="astructArgumentsBuilder_html"><div class="ttname"><a href="structArgumentsBuilder.html">ArgumentsBuilder</a></div><div class="ttdoc">A builder for building a list of arguments incrementally.</div><div class="ttdef"><b>Definition</b> arguments_builder.h:11</div></div>
-<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdoc">A list of command arguments.</div><div class="ttdef"><b>Definition</b> arguments.h:11</div></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#ad686f5ed78c7b31e1d36f9a18847bf10">   53</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="structArgumentsBuilder.html#ad686f5ed78c7b31e1d36f9a18847bf10">arguments_builder_append_character</a>(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder, <span class="keywordtype">char</span> character);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#a3f06715291081649c232a08761a385f3">   66</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="structArgumentsBuilder.html#a3f06715291081649c232a08761a385f3">arguments_builder_append_string</a>(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#a67f9ff25f1d73ce79097d3f33d8ff5c5">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="structArgumentsBuilder.html#a67f9ff25f1d73ce79097d3f33d8ff5c5">arguments_builder_ensure_in_argument</a>(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#a0bea2ff810580f64e59a519dfc5a2dc6">   91</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="structArgumentsBuilder.html#a0bea2ff810580f64e59a519dfc5a2dc6">arguments_builder_end_argument</a>(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="structArgumentsBuilder.html#ae0c1130d4b05aad91d11c638ac5089ee">  105</a></span><a class="code hl_struct" href="structArguments.html">Arguments</a> <a class="code hl_function" href="structArgumentsBuilder.html#ae0c1130d4b05aad91d11c638ac5089ee">arguments_builder_build</a>(<a class="code hl_struct" href="structArgumentsBuilder.html">ArgumentsBuilder</a> *builder);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#endif </span><span class="comment">// ARGUMENTS_BUILDER_H</span></div>
+<div class="ttc" id="aargument_8h_html"><div class="ttname"><a href="argument_8h.html">argument.h</a></div><div class="ttdoc">Defines the data structure for representing a shell command argument.</div></div>
+<div class="ttc" id="aarguments_8h_html"><div class="ttname"><a href="arguments_8h.html">arguments.h</a></div><div class="ttdoc">Defines the data structure for representing a list of shell command argument.</div></div>
+<div class="ttc" id="astructArgument_html"><div class="ttname"><a href="structArgument.html">Argument</a></div><div class="ttdoc">A command argument.</div><div class="ttdef"><b>Definition</b> argument.h:18</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html"><div class="ttname"><a href="structArgumentsBuilder.html">ArgumentsBuilder</a></div><div class="ttdoc">A builder for building a list of arguments incrementally.</div><div class="ttdef"><b>Definition</b> arguments_builder.h:18</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_a0039c3337c7405238bb9f5b270dbe5ef"><div class="ttname"><a href="structArgumentsBuilder.html#a0039c3337c7405238bb9f5b270dbe5ef">ArgumentsBuilder::arguments</a></div><div class="ttdeci">Arguments arguments</div><div class="ttdef"><b>Definition</b> arguments_builder.h:19</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_a0a02f24df64db956d7f41d392502ac40"><div class="ttname"><a href="structArgumentsBuilder.html#a0a02f24df64db956d7f41d392502ac40">ArgumentsBuilder::in_argument</a></div><div class="ttdeci">bool in_argument</div><div class="ttdef"><b>Definition</b> arguments_builder.h:21</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_a0bea2ff810580f64e59a519dfc5a2dc6"><div class="ttname"><a href="structArgumentsBuilder.html#a0bea2ff810580f64e59a519dfc5a2dc6">ArgumentsBuilder::arguments_builder_end_argument</a></div><div class="ttdeci">bool arguments_builder_end_argument(ArgumentsBuilder *builder)</div><div class="ttdoc">Ends the current argument in the arguments builder.</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_a3f06715291081649c232a08761a385f3"><div class="ttname"><a href="structArgumentsBuilder.html#a3f06715291081649c232a08761a385f3">ArgumentsBuilder::arguments_builder_append_string</a></div><div class="ttdeci">bool arguments_builder_append_string(ArgumentsBuilder *builder, const char *string)</div><div class="ttdoc">Appends a string to the current argument in the arguments builder.</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_a58b4759cb417192ab556519d7e00aef7"><div class="ttname"><a href="structArgumentsBuilder.html#a58b4759cb417192ab556519d7e00aef7">ArgumentsBuilder::argument</a></div><div class="ttdeci">Argument argument</div><div class="ttdef"><b>Definition</b> arguments_builder.h:20</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_a67f9ff25f1d73ce79097d3f33d8ff5c5"><div class="ttname"><a href="structArgumentsBuilder.html#a67f9ff25f1d73ce79097d3f33d8ff5c5">ArgumentsBuilder::arguments_builder_ensure_in_argument</a></div><div class="ttdeci">void arguments_builder_ensure_in_argument(ArgumentsBuilder *builder)</div><div class="ttdoc">Ensures that the arguments builder is in an argument.</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_aa2864b3222e7754352081dd4533df5cf"><div class="ttname"><a href="structArgumentsBuilder.html#aa2864b3222e7754352081dd4533df5cf">ArgumentsBuilder::arguments_builder_drop</a></div><div class="ttdeci">void arguments_builder_drop(ArgumentsBuilder *builder)</div><div class="ttdoc">Releases resources held by the given arguments builder.</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_ad686f5ed78c7b31e1d36f9a18847bf10"><div class="ttname"><a href="structArgumentsBuilder.html#ad686f5ed78c7b31e1d36f9a18847bf10">ArgumentsBuilder::arguments_builder_append_character</a></div><div class="ttdeci">bool arguments_builder_append_character(ArgumentsBuilder *builder, char character)</div><div class="ttdoc">Appends a character to the current argument in the arguments builder.</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_ad8659bf92df7b48f3ae8e3f62ee026c6"><div class="ttname"><a href="structArgumentsBuilder.html#ad8659bf92df7b48f3ae8e3f62ee026c6">ArgumentsBuilder::arguments_builder_new</a></div><div class="ttdeci">ArgumentsBuilder arguments_builder_new(void)</div><div class="ttdoc">Creates a new, empty arguments builder.</div></div>
+<div class="ttc" id="astructArgumentsBuilder_html_ae0c1130d4b05aad91d11c638ac5089ee"><div class="ttname"><a href="structArgumentsBuilder.html#ae0c1130d4b05aad91d11c638ac5089ee">ArgumentsBuilder::arguments_builder_build</a></div><div class="ttdeci">Arguments arguments_builder_build(ArgumentsBuilder *builder)</div><div class="ttdoc">Builds the final list of arguments from the arguments builder.</div></div>
+<div class="ttc" id="astructArguments_html"><div class="ttname"><a href="structArguments.html">Arguments</a></div><div class="ttdoc">A list of command arguments.</div><div class="ttdef"><b>Definition</b> arguments.h:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>arguments_builder.h</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="arguments__builder_8h.html">arguments_builder.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
