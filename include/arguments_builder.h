@@ -1,3 +1,10 @@
+/**
+ * @file arguments_builder.h
+ * @brief Defines a data structure for incrementally building a list of shell command arguments.
+ * @author Tarek Saeed
+ * @date 2026-03-02
+ */
+
 #ifndef ARGUMENTS_BUILDER_H
 #define ARGUMENTS_BUILDER_H
 
@@ -9,15 +16,17 @@
  * @brief A builder for building a list of arguments incrementally.
  */
 typedef struct {
-	Arguments arguments;
-	Argument argument;
-	bool in_argument;
+	Arguments arguments; /**< The list of arguments being built. */
+	Argument argument;   /**< The current argument being built. */
+	bool in_argument;    /**< Whether the builder is currently building an argument. */
 } ArgumentsBuilder;
 
 /**
  * @brief Creates a new, empty arguments builder.
  *
  * @return The created arguments builder.
+ *
+ * @memberof ArgumentsBuilder
  */
 ArgumentsBuilder arguments_builder_new(void);
 
@@ -25,6 +34,8 @@ ArgumentsBuilder arguments_builder_new(void);
  * @brief Releases resources held by the given arguments builder.
  *
  * @param[inout] builder Pointer to the arguments builder to drop.
+ *
+ * @memberof ArgumentsBuilder
  */
 void arguments_builder_drop(ArgumentsBuilder *builder);
 
@@ -36,6 +47,8 @@ void arguments_builder_drop(ArgumentsBuilder *builder);
  * @param[inout] builder Pointer to the arguments builder.
  * @param[in] character The character to be appended
  * @return true if successful, false otherwise.
+ *
+ * @memberof ArgumentsBuilder
  */
 bool arguments_builder_append_character(ArgumentsBuilder *builder, char character);
 
@@ -45,8 +58,10 @@ bool arguments_builder_append_character(ArgumentsBuilder *builder, char characte
  * if the arguments builder wasn't in an argument already, this starts a new argument.
  *
  * @param[inout] builder Pointer to the arguments builder.
- * @param[in] character The string to be appended
+ * @param[in] string The string to be appended
  * @return true if successful, false otherwise.
+ *
+ * @memberof ArgumentsBuilder
  */
 bool arguments_builder_append_string(ArgumentsBuilder *builder, const char *string);
 
@@ -57,6 +72,8 @@ bool arguments_builder_append_string(ArgumentsBuilder *builder, const char *stri
  * this is useful when the caller wants an empty argument, which can't be created by appending characters or strings.
  *
  * @param[inout] builder Pointer to the arguments builder.
+ *
+ * @memberof ArgumentsBuilder
  */
 void arguments_builder_ensure_in_argument(ArgumentsBuilder *builder);
 
@@ -68,6 +85,8 @@ void arguments_builder_ensure_in_argument(ArgumentsBuilder *builder);
  *
  * @param[inout] builder Pointer to the arguments builder.
  * @return true if successful, false otherwise.
+ *
+ * @memberof ArgumentsBuilder
  */
 bool arguments_builder_end_argument(ArgumentsBuilder *builder);
 
@@ -80,6 +99,8 @@ bool arguments_builder_end_argument(ArgumentsBuilder *builder);
  *
  * @param[inout] builder Pointer to the arguments builder.
  * @return The built list of arguments.
+ *
+ * @memberof ArgumentsBuilder
  */
 Arguments arguments_builder_build(ArgumentsBuilder *builder);
 

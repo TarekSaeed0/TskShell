@@ -1,3 +1,10 @@
+/**
+ * @file environment.h
+ * @brief Defines functions for managing environment variables in the shell.
+ * @author Tarek Saeed
+ * @date 2026-03-02
+ */
+
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
 

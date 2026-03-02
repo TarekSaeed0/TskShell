@@ -1,6 +1,8 @@
-<h1 align="center">TskShell</h1>
+# TskShell
 
-<p align="center"> A simple Unix shell written in C </p>
+<div align="center" style="margin-bottom: 1em;">
+A simple Unix shell written in C
+</div>
 
 <div align="center">
     <a href="https://github.com/TarekSaeed0/TskShell">

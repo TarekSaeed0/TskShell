@@ -3,7 +3,7 @@ project(
 	tskshell
 	VERSION 1.0
 	LANGUAGES C
-	DESCRIPTION "a simple unix shell"
+	DESCRIPTION "A simple Unix shell written in C"
 )
 
 add_executable(tskshell src/environment.c src/argument.c src/arguments.c src/arguments_builder.c src/command.c src/builtins.c src/main.c)

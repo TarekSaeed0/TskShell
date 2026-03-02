@@ -1,3 +1,10 @@
+/**
+ * @file builtins.h
+ * @brief Defines the built-in commands available in the shell.
+ * @author Tarek Saeed
+ * @date 2026-03-02
+ */
+
 #ifndef BUILTINS_H
 #define BUILTINS_H
 
@@ -5,11 +12,11 @@
 
 /**
  * @struct Builtin
- * @brief A shell builtin command.
+ * @brief A shell built-in command.
  */
 typedef struct {
-	const char *name;
-	int (*function)(int argc, char **argv);
+	const char *name;                       /**< The name of the built-in command. */
+	int (*function)(int argc, char **argv); /**< The function implementing the built-in command. */
 } Builtin;
 
 /**
