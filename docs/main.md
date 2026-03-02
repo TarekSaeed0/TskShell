@@ -5,11 +5,11 @@ A simple Unix shell written in C
 </div>
 
 <div align="center">
-    <a href="https://github.com/TarekSaeed0/TskShell">
+    <a href="https://github.com/TarekSaeed0/TskShell/blob/main/LICENSE">
         <img alt="Github License" src="https://img.shields.io/github/license/TarekSaeed0/TskShell?style=for-the-badge&labelColor=%231e1e2e&color=%238bd5ca">
     </a>
     <a href="https://github.com/TarekSaeed0/TskShell/pulse">
-        <img alt="last commit" src="https://img.shields.io/github/last-commit/TarekSaeed0/TskShell?style=for-the-badge&labelColor=%231e1e2e&color=%238bd5ca">
+        <img alt="Last Commit" src="https://img.shields.io/github/last-commit/TarekSaeed0/TskShell?style=for-the-badge&labelColor=%231e1e2e&color=%238bd5ca">
     </a>
     <a href="https://github.com/TarekSaeed0/TskShell/stargazers">
         <img alt="Repo stars" src="https://img.shields.io/github/stars/TarekSaeed0/TskShell?style=for-the-badge&labelColor=%231e1e2e&color=%238bd5ca">
