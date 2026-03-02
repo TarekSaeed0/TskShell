@@ -25,10 +25,8 @@
 var NAVTREE =
 [
   [ "TskShell", "index.html", [
+    [ "README", "md__2github_2workspace_2README.html", null ],
     [ "Data Structures", "annotated.html", [
-      [ "Features", "index.html#autotoc_md2", null ],
-      [ "Building", "index.html#autotoc_md3", null ],
-      [ "License", "index.html#autotoc_md4", null ],
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
       [ "Data Fields", "functions.html", [
